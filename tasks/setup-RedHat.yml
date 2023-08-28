@@ -5,3 +5,9 @@
     state: present
     enablerepo: "{{ mysql_enablerepo | default(omit, true) }}"
   register: rh_mysql_install_packages
+
+- name: Installez PyMySQL pour Python 3
+  pip:
+    name: PyMySQL
+  when: ansible_distribution_major_version == '7'
+
